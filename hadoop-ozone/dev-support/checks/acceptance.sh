@@ -24,8 +24,10 @@ DIST_DIR="$DIR/../../dist/target/ozone-$OZONE_VERSION"
 
 if [ ! -d "$DIST_DIR" ]; then
     echo "Distribution dir is missing. Doing a full build"
-    "$DIR/build.sh"
+    "$DIR/build.sh" -Pjacoco
 fi
+
+export HADOOP_OPTS='-javaagent:/opt/hadoop/share/jacoco/jacoco-agent.jar=destfile=/tmp/jacoco.exec,includes=org.apache.hadoop.ozone.*:org.apache.hadoop.hdds'
 
 cd "$DIST_DIR/compose" || exit 1
 ./test-all.sh
