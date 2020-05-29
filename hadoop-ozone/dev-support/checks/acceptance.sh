@@ -34,4 +34,7 @@ cd "$DIST_DIR/compose" || exit 1
 RES=$?
 cp result/* "$REPORT_DIR/"
 cp "$REPORT_DIR/log.html" "$REPORT_DIR/summary.html"
+
+"$DIST_DIR/share/jacoco/jacoco-cli.jar" merge $(find "$REPORT_DIR" -name "*.jacoco.exec") --destdir "$REPORT_DIR/jacoco-combined.exec"
+
 exit $RES
