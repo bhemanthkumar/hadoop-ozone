@@ -20,7 +20,7 @@ jobs:
     name: acceptance
     runs-on: ubuntu-18.04
     steps:
-        - runs: |
+        - run: |
             sudo chmod 777 /mnt
             git clone --depth=1 https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
             cd /mnt/ozone
