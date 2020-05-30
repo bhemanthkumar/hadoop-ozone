@@ -24,7 +24,7 @@ jobs:
             sudo chmod 777 /mnt
             git clone --depth=1 https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
             cd /mnt/ozone
-            git checkout ${GITHUB_REF}
+            git checkout ${GITHUB_SHA}
             git reset --hard
         - run: sudo pip install robotframework
         - run: cd /mnt/ozone && hadoop-ozone/dev-support/checks/acceptance.sh
