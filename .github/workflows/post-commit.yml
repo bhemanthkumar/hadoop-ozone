@@ -21,6 +21,8 @@ jobs:
     runs-on: ubuntu-18.04
     steps:
         - run: |
+            set -x
+            echo $GITHUB_REPOSITORY
             sudo chmod 777 /mnt
             git clone --depth=1 https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
             cd /mnt/ozone
