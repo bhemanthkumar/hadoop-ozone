@@ -24,7 +24,7 @@ jobs:
             set -x
             echo $GITHUB_REPOSITORY
             sudo chmod 777 /mnt
-            git clone --depth=1 https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
+            git clone https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
             cd /mnt/ozone
             git checkout ${GITHUB_SHA}
             git reset --hard
