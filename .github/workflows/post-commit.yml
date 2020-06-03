@@ -20,10 +20,10 @@ jobs:
     name: acceptance
     runs-on: ubuntu-18.04
     steps:
-    with:
         - uses: actions/cache@v2
-          path: ~/.m2/repository
-          key: maven-dependencies
+          with:
+             path: ~/.m2/reposttory
+             key: maven-dependencies
         - run: |
             sudo chmod 777 /mnt
             git clone https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
