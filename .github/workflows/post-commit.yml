@@ -20,9 +20,11 @@ jobs:
     name: acceptance
     runs-on: ubuntu-18.04
     steps:
+    with:
+        - uses: actions/cache@v2
+          path: ~/.m2/repository
+          key: maven-dependencies
         - run: |
-            set -x
-            echo $GITHUB_REPOSITORY
             sudo chmod 777 /mnt
             git clone https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
             cd /mnt/ozone
@@ -37,3 +39,8 @@ jobs:
           with:
             name: acceptance
             path: /mnt/ozone/target/acceptance
+        - runs: |
+            #Never cache local artifacts
+            rm -rf ~/.m2/repository/org/apache/hadoop/hdds
+            rm -rf ~/.m2/repository/org/apache/hadoop/ozone
+          if: always()
