@@ -39,7 +39,7 @@ jobs:
           with:
             name: acceptance
             path: /mnt/ozone/target/acceptance
-        - runs: |
+        - run: |
             #Never cache local artifacts
             rm -rf ~/.m2/repository/org/apache/hadoop/hdds
             rm -rf ~/.m2/repository/org/apache/hadoop/ozone
