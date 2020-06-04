@@ -22,8 +22,8 @@ jobs:
     steps:
         - uses: actions/cache@v2
           with:
-             path: ~/.m2/reposttory
-             key: maven-dependencies
+             path: ~/.m2/repository
+             key: maven-repo-${{ hashFiles('**/pom.xml') }}
         - run: |
             sudo chmod 777 /mnt
             git clone https://github.com/${GITHUB_REPOSITORY}.git /mnt/ozone
